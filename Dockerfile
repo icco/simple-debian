@@ -8,12 +8,15 @@ RUN apt-get update
 ADD packages.txt /tmp/
 RUN apt-get -qy install `cat /tmp/packages.txt`
 
-RUN apt-get install -y locales 
+RUN apt-get install -y locales
+ADD locale.gen /etc/locale.gen
+RUN locale-gen
+RUN locale-gen en_US.UTF-8
+RUN dpkg-reconfigure locales
+
 ENV LANGUAGE en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
-RUN locale-gen en_US.UTF-8
-RUN dpkg-reconfigure locales
 
 RUN mkdir -p /opt/ruby && cd /opt/ruby && curl --progress ftp://ftp.ruby-lang.org/pub/ruby/ruby-2.0.0-p353.tar.gz | tar xz
 RUN cd /opt/ruby/ruby* && ./configure && make && make install
