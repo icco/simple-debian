@@ -8,6 +8,13 @@ RUN apt-get update
 ADD packages.txt /tmp/
 RUN apt-get -qy install `cat /tmp/packages.txt`
 
+RUN apt-get install -y language-pack-en
+ENV LANGUAGE en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+RUN locale-gen en_US.UTF-8
+RUN dpkg-reconfigure locales
+
 RUN mkdir -p /opt/ruby && cd /opt/ruby && curl --progress ftp://ftp.ruby-lang.org/pub/ruby/ruby-2.0.0-p353.tar.gz | tar xz
 RUN cd /opt/ruby/ruby* && ./configure && make && make install
 RUN echo "gem: --no-ri --no-rdoc" > /root/.gemrc
