@@ -23,5 +23,6 @@ python
 python-docutils
 python-software-properties
 ssh
+ssl-cert
 vim
 zlib1g-dev
