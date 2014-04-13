@@ -24,7 +24,7 @@ ENV LC_ALL en_US.UTF-8
 RUN mkdir -p /opt/ruby && cd /opt/ruby && curl --progress ftp://ftp.ruby-lang.org/pub/ruby/2.1/ruby-2.1.1.tar.gz | tar xz
 RUN cd /opt/ruby/ruby* && ./configure && make && make install
 RUN echo "gem: --no-ri --no-rdoc" > /root/.gemrc
-RUN gem install bundler rake
+RUN gem install bundler
 
 # Read an identity file
 RUN echo " IdentityFile ~/.ssh/id_rsa" >> /etc/ssh/ssh_config
