@@ -9,6 +9,7 @@ imagemagick
 libcurl4-openssl-dev
 libffi-dev
 libgdbm-dev
+libgsl0-dev
 libicu-dev
 libncurses5-dev
 libpq-dev
