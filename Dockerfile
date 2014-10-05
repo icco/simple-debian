@@ -21,7 +21,7 @@ ENV LANG en_US.UTF-8
 ENV LC_ALL en_US.UTF-8
 
 # Install Ruby
-RUN mkdir -p /opt/ruby && cd /opt/ruby && curl --progress ftp://ftp.ruby-lang.org/pub/ruby/2.1/ruby-2.1.1.tar.gz | tar xz
+RUN mkdir -p /opt/ruby && cd /opt/ruby && curl --progress ftp://ftp.ruby-lang.org/pub/ruby/2.1/ruby-2.1.3.tar.gz | tar xz
 RUN cd /opt/ruby/ruby* && ./configure && make && make install
 RUN echo "gem: --no-ri --no-rdoc" > /root/.gemrc
 RUN gem install bundler
